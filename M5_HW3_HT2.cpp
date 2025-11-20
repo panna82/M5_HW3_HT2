@@ -63,8 +63,11 @@ public:
 		return arr[num];
 	}
 
-	smart_array operator=(smart_array other) 
+	smart_array operator=(smart_array const &other) 
 	{
+		delete[] arr;
+		arr = new int[other.fsize];
+
 		for (int i = 0; i < fsize; i++)
 		{
 			arr[i] = other.arr[i];
@@ -85,6 +88,7 @@ int main()
 	int destr_counter = 0;
 
 	try {
+
 		smart_array arr(5);
 		arr.add_element(1);
 		arr.add_element(4);
